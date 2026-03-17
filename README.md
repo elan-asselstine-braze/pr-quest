@@ -1,6 +1,8 @@
 # PR Quest
 
-A self-serve learning site that helps designers get confident and comfortable submitting pull requests. Learn from the site, modify the site via PR, review seeded PRs, and use Cursor to find and fix a bug.
+A self-serve learning site that helps designers get confident and comfortable submitting pull requests.
+
+**New to this repo?** See [docs/GITHUB_SETUP.md](docs/GITHUB_SETUP.md) for how to put this project on GitHub and push your first commit. Learn from the site, modify the site via PR, review seeded PRs, and use Cursor to find and fix a bug.
 
 ## Branch naming (important)
 
