@@ -138,7 +138,7 @@ async function level2Flow() {
   console.log(chalk.gray("  - 1 clarifying question"));
   console.log(chalk.gray("  - 1 suggestion"));
   console.log(chalk.gray("  - 1 summary comment\n"));
-  console.log(chalk.white("  Seeded PR: ") + chalk.cyan("https://github.com/your-org/pr-quest/pull/1"));
+  console.log(chalk.white("  Seeded PR: ") + chalk.cyan("https://github.com/elan-asselstine-braze/pr-quest/pulls"));
   console.log(chalk.gray("\n  Tip: You're not trying to prove you're technical. You're making the work clearer, safer, and stronger.\n"));
   console.log(chalk.gray("  When done, mark Level 2 complete on the website.\n"));
 }

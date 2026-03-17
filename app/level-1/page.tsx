@@ -108,7 +108,7 @@ export default function Level1Page() {
           </pre>
           <p className="text-sm text-[var(--color-text-muted)]">
             Then choose one change below. Edit the file, save, commit, and open a PR. Use the{" "}
-            <Link href="https://github.com/your-org/pr-quest/blob/main/PR_TEMPLATE.md" className="text-[var(--color-accent)] underline">
+            <Link href="https://github.com/elan-asselstine-braze/pr-quest/blob/main/PR_TEMPLATE.md" className="text-[var(--color-accent)] underline" target="_blank" rel="noopener noreferrer">
               PR template
             </Link>.
           </p>

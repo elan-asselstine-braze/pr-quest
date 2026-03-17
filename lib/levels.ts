@@ -6,7 +6,7 @@ export const levels = [
 
 /** URL for the Level 2 seeded PR (set before session or via env) */
 export const SEEDED_PR_URL =
-  process.env.NEXT_PUBLIC_SEEDED_PR_URL || "https://github.com/your-org/pr-quest/pull/1";
+  process.env.NEXT_PUBLIC_SEEDED_PR_URL || "https://github.com/elan-asselstine-braze/pr-quest/pulls";
 
 /** First-PR options for Level 1 (meta: improve this site) */
 export const firstChangeOptions = [
