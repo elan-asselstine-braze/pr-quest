@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { TabNav } from "@/components/TabNav";
 
 export const metadata: Metadata = {
   title: "PR Quest",
@@ -13,7 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased flex">
+        <TabNav />
+        <div className="flex-1 min-w-0 flex flex-col">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }

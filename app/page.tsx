@@ -1,76 +1,36 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { levels, STORAGE_KEY, defaultProgress, type Progress } from "@/lib/levels";
-import { Badge } from "@/components/Badge";
-import { ProgressBar } from "@/components/ProgressBar";
-
-function getProgress(): Progress {
-  if (typeof window === "undefined") return defaultProgress;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) return defaultProgress;
-    return { ...defaultProgress, ...JSON.parse(raw) };
-  } catch {
-    return defaultProgress;
-  }
-}
+import { MainProgressTile } from "@/components/dashboard/MainProgressTile";
+import { ContributorsTile } from "@/components/dashboard/ContributorsTile";
+import { EmojiOfTheDayTile } from "@/components/dashboard/EmojiOfTheDayTile";
+import { ButtonMenuTile } from "@/components/dashboard/ButtonMenuTile";
 
 export default function HomePage() {
-  const [progress, setProgress] = useState<Progress>(defaultProgress);
-
-  useEffect(() => {
-    setProgress(getProgress());
-  }, []);
-
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="border-b border-white/10 px-4 py-3 flex items-center justify-between">
-        <span className="font-semibold text-[var(--color-accent)]">PR Quest</span>
-        <ProgressBar />
-      </header>
-
-      <main className="flex-1 px-4 py-12 max-w-3xl mx-auto w-full">
-        <h1 className="text-4xl font-bold mb-4 gradient-accent bg-clip-text text-transparent">
-          Get confident with pull requests
+    <main className="flex-1 px-3 py-6 sm:px-4 sm:py-8 w-full min-w-0">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-[var(--color-accent)]">
+          Dashboard
         </h1>
-        <p className="text-[var(--color-text-muted)] text-lg mb-10">
-          Learn → Modify via PR → Review → Debug with AI. You’ll learn on this site and change this site.
+        <p className="text-[var(--color-text-muted)] text-sm sm:text-base mb-6">
+          Play around with PRs. Change the emoji, add a button, add your name.
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-10">
-          {levels.map((level) => (
-            <Badge
-              key={level.id}
-              id={level.id}
-              label={level.badge}
-              unlocked={progress[`level${level.id}` as keyof Progress]?.complete ?? false}
-            />
-          ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="sm:row-span-1">
+            <MainProgressTile />
+          </div>
+          <div>
+            <ContributorsTile />
+          </div>
+          <div>
+            <EmojiOfTheDayTile />
+          </div>
+          <div>
+            <ButtonMenuTile />
+          </div>
         </div>
-
-        <div className="space-y-4">
-          {levels.map((level) => (
-            <Link
-              key={level.id}
-              href={level.path}
-              className="block glass-card hover:border-[var(--color-accent)]/30 transition-colors"
-            >
-              <h2 className="text-xl font-semibold mb-1">{level.title}</h2>
-              <p className="text-[var(--color-text-muted)] text-sm">
-                {level.id === 1 && "Create a branch, make a small change, open your first PR."}
-                {level.id === 2 && "Review a seeded PR and leave helpful comments."}
-                {level.id === 3 && "Find and fix an intentional bug using Cursor."}
-              </p>
-            </Link>
-          ))}
-        </div>
-
-        <p className="mt-10 text-[var(--color-text-muted)] text-sm">
-          Prefer a guided flow? Run <code className="bg-white/10 px-1.5 py-0.5 rounded">npm run quest</code> in your terminal.
-        </p>
-      </main>
-    </div>
+      </div>
+    </main>
   );
 }

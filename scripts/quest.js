@@ -6,7 +6,7 @@ const chalk = require("chalk");
 const inquirer = require("inquirer");
 
 const ROOT = path.resolve(__dirname, "..");
-const TARGET_FILE_CONTRIB = "app/contributors/page.tsx";
+const TARGET_FILE_CONTRIB = "lib/contributors.ts";
 
 function run(cmd, opts = {}) {
   try {
@@ -51,7 +51,7 @@ function welcome() {
 }
 
 async function level1Flow(name) {
-  const branchName = name ? `level1-${name.replace(/\s+/g, "-").toLowerCase()}` : "level1-yourname";
+  const branchName = name ? `task1-${name.replace(/\s+/g, "-").toLowerCase()}` : "task1-yourname";
 
   console.log(chalk.bold("\n--- Level 1: Ship Your Mark ---\n"));
   console.log(chalk.gray("You will: create a branch, make a small change, commit, and open a PR.\n"));
@@ -77,7 +77,7 @@ async function level1Flow(name) {
   console.log(chalk.cyan("  git checkout -b " + branchName + "\n"));
   console.log(chalk.gray("  What this does: creates a new branch and switches you to it. Your work stays separate from main.\n"));
   const branch = currentBranch();
-  if (branch && branch.startsWith("level1-")) {
+  if (branch && branch.startsWith("task1-")) {
     console.log(chalk.green("  ✔ You're on branch " + branch + "\n"));
   } else {
     console.log(chalk.gray("  After you run the command above, run " + chalk.cyan("npm run quest") + " again to continue.\n"));
@@ -87,14 +87,15 @@ async function level1Flow(name) {
   // Step 3: Make change
   console.log(chalk.yellow("Step 3 of 5 — Make your change\n"));
   console.log(chalk.white("  Target file: " + chalk.cyan(TARGET_FILE_CONTRIB)));
-  console.log(chalk.gray("  Add your name to the Designers Who Shipped list on the Contributors page.\n"));
+  console.log(chalk.gray("  Add your name to the Designers Who Shipped list on the Contributors page."));
+  console.log(chalk.gray("  To see your changes: keep " + chalk.cyan("npm run dev") + " running and open http://localhost:3000 in your browser.\n"));
   const modified = getModifiedFiles();
   const touchedRightFile = modified.some((f) => f === TARGET_FILE_CONTRIB || f.includes("contributors"));
   if (hasUncommittedChanges() && touchedRightFile) {
     console.log(chalk.green("  ✔ You edited the correct file"));
     console.log(chalk.green("  ✔ Git detects changes\n"));
   } else if (hasUncommittedChanges()) {
-    console.log(chalk.yellow("  ✔ Git detects changes. If you meant to edit Contributors, the file is app/contributors/page.tsx\n"));
+    console.log(chalk.yellow("  ✔ Git detects changes. If you meant to edit Contributors, the file is lib/contributors.ts\n"));
   } else {
     console.log(chalk.yellow("  Hmm — I don't see any file changes yet.\n"));
     console.log(chalk.gray("  Common reasons:"));
@@ -176,7 +177,7 @@ async function main() {
 
   if (level === 1) {
     const { name } = await inquirer.prompt([
-      { type: "input", name: "name", message: "Your name (for branch level1-<name>):", default: "yourname" },
+      { type: "input", name: "name", message: "Your name (for branch task1-<name>):", default: "yourname" },
     ]);
     await level1Flow(name);
   } else if (level === 2) {

@@ -5,7 +5,9 @@ import { LevelLayout } from "@/components/LevelLayout";
 import { Badge } from "@/components/Badge";
 import { PowerPrompt } from "@/components/PowerPrompt";
 import { BuggyCard } from "@/components/BuggyCard";
+import { TerminalBlock } from "@/components/TerminalBlock";
 import { levels, powerPrompts, STORAGE_KEY, defaultProgress, type Progress } from "@/lib/levels";
+import { level3Commands } from "@/lib/terminalCommands";
 
 function getProgress(): Progress {
   if (typeof window === "undefined") return defaultProgress;
@@ -80,6 +82,18 @@ export default function Level3Page() {
         </section>
 
         <section>
+          <h2 className="text-xl font-semibold mb-3">Submit your fix (terminal commands)</h2>
+          <p className="text-sm text-[var(--color-text-muted)] mb-3">
+            After you fix the bug, use these commands to open a PR. Replace yourname with your name.
+          </p>
+          <TerminalBlock
+            commands={level3Commands}
+            title="Branch, commit, push"
+            copyLabel="Copy"
+          />
+        </section>
+
+        <section>
           <h2 className="text-xl font-semibold mb-3">AI Power Prompts</h2>
           <p className="text-sm text-[var(--color-text-muted)] mb-4">
             Copy these into Cursor to guide your investigation.
@@ -107,7 +121,7 @@ export default function Level3Page() {
           {allChecked && (
             <div className="pt-4 flex items-center gap-2">
               <Badge id={3} label={levels[2].badge} unlocked={true} />
-              <span className="text-sm text-[var(--color-text-muted)]">Level 3 complete!</span>
+              <span className="text-sm text-[var(--color-text-muted)]">Complete!</span>
             </div>
           )}
         </section>

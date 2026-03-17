@@ -5,7 +5,7 @@ import Link from "next/link";
 import { LevelLayout } from "@/components/LevelLayout";
 import { Badge } from "@/components/Badge";
 import { DiffExplainer } from "@/components/DiffExplainer";
-import { levels, SEEDED_PR_URL, STORAGE_KEY, defaultProgress, type Progress } from "@/lib/levels";
+import { levels, seededReviewPRs, STORAGE_KEY, defaultProgress, type Progress } from "@/lib/levels";
 
 function getProgress(): Progress {
   if (typeof window === "undefined") return defaultProgress;
@@ -62,17 +62,24 @@ export default function Level2Page() {
         <section className="glass-card space-y-4">
           <h2 className="text-xl font-semibold">Your mission</h2>
           <p className="text-[var(--color-text-muted)]">
-            Open the seeded PR on GitHub and leave at least one clarifying question, one
-            suggestion, and one summary comment.
+            Open a seeded PR on GitHub and leave at least one clarifying question, one
+            suggestion, and one summary comment. Pick any PR below—each has intentional issues to find.
           </p>
-          <a
-            href={SEEDED_PR_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-4 py-2 rounded-lg gradient-accent text-white font-medium hover:opacity-90"
-          >
-            Open seeded PR →
-          </a>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {seededReviewPRs.map((pr) => (
+              <a
+                key={pr.title}
+                href={pr.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block p-4 rounded-lg border border-white/10 bg-white/5 hover:border-[var(--color-accent)]/30 hover:bg-[var(--color-accent)]/5 transition-colors"
+              >
+                <span className="font-medium text-[var(--color-text)]">{pr.title}</span>
+                <p className="text-xs text-[var(--color-text-muted)] mt-1">{pr.focus}</p>
+                <span className="text-xs text-[var(--color-accent)] mt-2 inline-block">Review on GitHub →</span>
+              </a>
+            ))}
+          </div>
         </section>
 
         <section className="glass-card space-y-3">
@@ -91,7 +98,7 @@ export default function Level2Page() {
           {allChecked && (
             <div className="pt-4 flex items-center gap-2">
               <Badge id={2} label={levels[1].badge} unlocked={true} />
-              <span className="text-sm text-[var(--color-text-muted)]">Level 2 complete!</span>
+              <span className="text-sm text-[var(--color-text-muted)]">Complete!</span>
             </div>
           )}
         </section>

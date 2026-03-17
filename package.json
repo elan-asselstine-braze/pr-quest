@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:port": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "quest": "node scripts/quest.js"
+    "quest": "node scripts/quest.js",
+    "seed-review-prs": "node scripts/seed-review-prs.js"
   },
   "dependencies": {
     "next": "^15.0.0",

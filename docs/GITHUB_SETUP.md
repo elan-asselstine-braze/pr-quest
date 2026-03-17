@@ -13,12 +13,19 @@ Your project is already a git repo with an initial commit on `main`. Follow thes
 
 ## 2. Connect your local repo and push
 
-GitHub will show you "…or push an existing repository from the command line." Use those commands, or run:
+**If you get "remote origin already exists":** update the URL instead of adding:
+
+```bash
+git remote set-url origin https://github.com/YOUR_USERNAME/pr-quest.git
+```
+
+Then push (same as below).
+
+**First-time setup:** add GitHub as the remote (replace YOUR_USERNAME with your GitHub username):
 
 ```bash
 cd "/Users/elan.asselstine/Desktop/PR Quest"
 
-# Add GitHub as the remote (replace YOUR_USERNAME with your GitHub username)
 git remote add origin https://github.com/YOUR_USERNAME/pr-quest.git
 
 # Or with SSH:
