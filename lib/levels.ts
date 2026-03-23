@@ -24,7 +24,7 @@ export type PracticeTask = {
   cursorPrompts?: string[];
 };
 
-/** Practice tasks: progressive unlock. First PR always first; beginner unlocks after it; intermediate after all beginner; advanced after all intermediate. */
+/** Practice tasks: progressive unlock. First PR always first; beginner unlocks after it; intermediate and advanced unlock after 4 beginner tasks. */
 export const practiceTasks: PracticeTask[] = [
   {
     id: 1,
@@ -131,6 +131,104 @@ export const practiceTasks: PracticeTask[] = [
       "Use window.confirm or a modal for reset confirmation",
     ],
   },
+  {
+    id: 10,
+    title: "Add Task Search",
+    description: "Add a search bar to filter practice tasks by title. Helpful for navigating all these tasks. (~35 min)",
+    path: "/task/10",
+    difficulty: "intermediate",
+    unlocksAfter: "beginner",
+    branchPrefix: "task10",
+    file: "app/practice/page.tsx",
+    cursorPrompts: [
+      "Add a search input to filter practice tasks by title",
+      "Filter practiceTasks based on search query",
+    ],
+  },
+  {
+    id: 11,
+    title: "Add Confetti on PR Submit",
+    description: "Trigger a confetti animation when the user marks a task complete. Celebration! (~40 min)",
+    path: "/task/11",
+    difficulty: "intermediate",
+    unlocksAfter: "beginner",
+    branchPrefix: "task11",
+    file: "app/level-1/page.tsx, app/task/[id]/page.tsx",
+    cursorPrompts: [
+      "Add confetti animation when task is marked complete",
+      "Use canvas-confetti or similar library for celebration effect",
+    ],
+  },
+  {
+    id: 12,
+    title: "Random Task Picker Button",
+    description: "Add a button that picks a random unlocked task for the user. Fun way to choose what to work on. (~30 min)",
+    path: "/task/12",
+    difficulty: "intermediate",
+    unlocksAfter: "beginner",
+    branchPrefix: "task12",
+    file: "app/practice/page.tsx",
+    cursorPrompts: [
+      "Add a button that selects a random unlocked practice task",
+      "Navigate to the randomly chosen task",
+    ],
+  },
+  {
+    id: 13,
+    title: "Add a Fun Fact Card",
+    description: "Add a dashboard tile that displays a fun fact. More playful content. (~15 min)",
+    path: "/task/13",
+    difficulty: "beginner",
+    unlocksAfter: "first-pr",
+    branchPrefix: "task13",
+    file: "app/page.tsx, components/dashboard/",
+    cursorPrompts: [
+      "Create a FunFactTile component with a fun fact",
+      "Add it to the dashboard grid",
+    ],
+  },
+  {
+    id: 14,
+    title: "Add Quote of the Day",
+    description: "Add a quote section that users can change via PR. Another change-me section idea. (~15 min)",
+    path: "/task/14",
+    difficulty: "beginner",
+    unlocksAfter: "first-pr",
+    branchPrefix: "task14",
+    file: "lib/quoteOfTheDay.ts, components/dashboard/",
+    cursorPrompts: [
+      "Create quoteOfTheDay similar to emojiOfTheDay",
+      "Add a QuoteOfTheDayTile to the dashboard",
+    ],
+  },
+  {
+    id: 15,
+    title: "Create Achievement Badge System",
+    description: "Add badges for milestones (first PR, 5 tasks, all beginner, etc.). Gamification. (~60 min)",
+    path: "/task/15",
+    difficulty: "advanced",
+    unlocksAfter: "intermediate",
+    branchPrefix: "task15",
+    file: "lib/levels.ts, components/dashboard/MainProgressTile.tsx",
+    cursorPrompts: [
+      "Define achievement criteria based on progress",
+      "Display earned badges on the dashboard",
+    ],
+  },
+  {
+    id: 16,
+    title: "Create Theme Color Picker",
+    description: "Let users pick an accent color from a palette. Full customization. (~65 min)",
+    path: "/task/16",
+    difficulty: "advanced",
+    unlocksAfter: "intermediate",
+    branchPrefix: "task16",
+    file: "app/globals.css, app/layout.tsx",
+    cursorPrompts: [
+      "Add a color picker or preset palette for accent color",
+      "Store selection and apply CSS variables dynamically",
+    ],
+  },
 ];
 
 /** Number of completed practice tasks */
@@ -170,19 +268,21 @@ export function isTaskComplete(taskId: number, progress: Progress): boolean {
   return progress.taskProgress?.[taskId] ?? false;
 }
 
+const BEGINNER_UNLOCK_THRESHOLD = 4;
+
 /** Check if a practice task is unlocked based on progress. */
 export function isPracticeTaskUnlocked(task: PracticeTask, progress: Progress): boolean {
   if (task.unlocksAfter === "first-pr") {
     if (task.id === 1) return true;
     return isTaskComplete(1, progress);
   }
-  if (task.unlocksAfter === "beginner") {
+  // Intermediate and advanced: unlock when 4 beginner tasks are complete
+  if (task.unlocksAfter === "beginner" || task.unlocksAfter === "intermediate") {
     const beginnerTasks = practiceTasks.filter((t) => t.difficulty === "beginner");
-    return beginnerTasks.every((t) => isTaskComplete(t.id, progress));
+    const completed = beginnerTasks.filter((t) => isTaskComplete(t.id, progress)).length;
+    return completed >= BEGINNER_UNLOCK_THRESHOLD;
   }
-  // unlocksAfter "intermediate" = all intermediate tasks must be complete (unlocks advanced)
-  const intermediateTasks = practiceTasks.filter((t) => t.difficulty === "intermediate");
-  return intermediateTasks.every((t) => isTaskComplete(t.id, progress));
+  return false;
 }
 
 /** XP / level-up framing: complete modules to earn XP, level up at thresholds (Pokémon-style) */
@@ -192,7 +292,7 @@ export const TASK_BEGINNER_XP = 25;
 export const TASK_INTERMEDIATE_XP = 50;
 export const TASK_ADVANCED_XP = 75;
 export const MAX_LEVEL = 3;
-export const MAX_XP = 500; // Generous cap for many tasks
+export const MAX_XP = 900; // Cap for all 16 practice tasks
 
 export function getTotalXP(progress: Progress): number {
   let xp = 0;
@@ -319,9 +419,13 @@ export function getNextLearnModule(
   return learnModules.find((m) => !isLearnModuleComplete(m, progress, markedIds)) ?? null;
 }
 
+/** Direct link to the GitHub repo (for PR submission, etc.) */
+export const REPO_URL =
+  process.env.NEXT_PUBLIC_REPO_URL || "https://github.com/elan-asselstine-braze/pr-quest";
+
 /** URL for the Level 2 seeded PR (legacy single-PR link) */
 export const SEEDED_PR_URL =
-  process.env.NEXT_PUBLIC_SEEDED_PR_URL || "https://github.com/elan-asselstine-braze/pr-quest/pulls";
+  process.env.NEXT_PUBLIC_SEEDED_PR_URL || `${REPO_URL}/pulls`;
 
 /** Seeded PRs for review practice. Set via NEXT_PUBLIC_SEEDED_REVIEW_PRS (JSON array) or add URLs here. */
 export type SeededReviewPR = {

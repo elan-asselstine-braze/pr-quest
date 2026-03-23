@@ -7,6 +7,7 @@ import { LevelLayout } from "@/components/LevelLayout";
 import { CopyableCommand } from "@/components/CopyableCommand";
 import {
   practiceTasks,
+  REPO_URL,
   STORAGE_KEY,
   defaultProgress,
   isPracticeTaskUnlocked,
@@ -161,7 +162,74 @@ export default function TaskPage() {
 function BeginnerTaskContent({ task }: { task: PracticeTask }) {
   const content = TASK_CONTENT[task.id];
   if (!content) return <LighterTaskContent task={task} />;
-  return <div className="space-y-16">{content}</div>;
+  return (
+    <div className="space-y-16">
+      {content}
+      <SubmitPRSection task={task} />
+    </div>
+  );
+}
+
+function SubmitPRSection({ task }: { task: PracticeTask }) {
+  const branchExample = getBranchName(task, "yourname");
+  const commitMsg = `[Task ${task.id}] ${task.title}`;
+
+  return (
+    <>
+      <section className="glass-card p-6 space-y-4">
+        <h2 className="text-xl font-semibold text-[var(--color-text)]">Preview your changes</h2>
+        <p className="text-[var(--color-text-muted)]">
+          Before submitting, run the app and check your changes in the browser.
+        </p>
+        <CopyableCommand command="npm run dev" />
+        <p className="text-sm text-[var(--color-text-muted)]">
+          Open <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline">localhost:3000</a> and verify everything looks right.
+        </p>
+      </section>
+
+      <section className="glass-card p-6 space-y-6">
+        <h2 className="text-xl font-semibold text-[var(--color-text)]">Submit your PR</h2>
+        <p className="text-[var(--color-text-muted)]">
+          Once your changes look good, commit, push, and open a pull request.
+        </p>
+
+        <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
+          <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor to do it:</p>
+          <p className="text-sm text-[var(--color-text-muted)] mb-2">
+            In Cursor chat, try: <em>&quot;Commit and push my changes with message &apos;{commitMsg}&apos;. My branch is {branchExample}.&quot;</em>
+          </p>
+        </div>
+
+        <div className="rounded-lg bg-white/5 border border-white/10 p-4">
+          <p className="text-sm font-medium text-[var(--color-text)] mb-3">Or run the commands manually:</p>
+          <div className="space-y-3">
+            <div>
+              <p className="text-xs text-[var(--color-text-muted)] mb-1">1. Stage your changes</p>
+              <CopyableCommand command="git add ." />
+            </div>
+            <div>
+              <p className="text-xs text-[var(--color-text-muted)] mb-1">2. Commit with a message</p>
+              <CopyableCommand command={`git commit -m "${commitMsg}"`} />
+            </div>
+            <div>
+              <p className="text-xs text-[var(--color-text-muted)] mb-1">3. Push to GitHub</p>
+              <CopyableCommand command={`git push -u origin ${branchExample}`} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="glass-card p-6 space-y-4">
+        <h3 className="text-lg font-semibold text-[var(--color-text)]">4. Open your pull request</h3>
+        <p className="text-[var(--color-text-muted)]">
+          <Link href={REPO_URL} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline">
+            Go to the repo on GitHub
+          </Link>
+          . You&apos;ll see a yellow banner: <strong className="text-[var(--color-text)]">&quot;Compare &amp; pull request&quot;</strong>. Click it, fill in the title and description (use the PR template if there is one), then click <strong className="text-[var(--color-text)]">Create pull request</strong>.
+        </p>
+      </section>
+    </>
+  );
 }
 
 function LighterTaskContent({ task }: { task: PracticeTask }) {
@@ -185,8 +253,8 @@ function LighterTaskContent({ task }: { task: PracticeTask }) {
       )}
       <section className="rounded-xl border border-white/10 bg-white/5 p-6">
         <h2 className="font-semibold text-[var(--color-text)] mb-2">When you&apos;re done</h2>
-        <p className="text-sm text-[var(--color-text-muted)]">
-          Commit, push, and open a PR. Use the branch <code className="bg-black/40 px-1 rounded">{task.branchPrefix}-yourname</code>.
+        <p className="text-sm text-[var(--color-text-muted)] mb-2">
+          Run <code className="bg-black/40 px-1 rounded">npm run dev</code> to preview, then commit, push, and open a PR. Use the branch <code className="bg-black/40 px-1 rounded">{task.branchPrefix}-yourname</code>.
         </p>
       </section>
     </div>
@@ -246,6 +314,34 @@ const TASK_CONTENT: Record<number, React.ReactNode> = {
         <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
           <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor:</p>
           <p className="text-sm text-[var(--color-text-muted)] italic">&quot;Add a fun useless button to playfulButtons.ts with label [your idea]&quot;</p>
+        </div>
+      </section>
+    </>
+  ),
+  13: (
+    <>
+      <section className="glass-card p-6 space-y-4">
+        <h2 className="text-xl font-semibold text-[var(--color-text)]">Add a Fun Fact card</h2>
+        <p className="text-[var(--color-text-muted)]">
+          Create a new tile component (e.g. <code className="bg-black/40 px-1 rounded">FunFactTile.tsx</code>) that displays a fun fact. Add it to the dashboard grid in <code className="bg-black/40 px-1 rounded">app/page.tsx</code>. Follow the pattern of EmojiOfTheDayTile or ContributorsTile.
+        </p>
+        <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
+          <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor:</p>
+          <p className="text-sm text-[var(--color-text-muted)] italic">&quot;Create a FunFactTile component and add it to the dashboard&quot;</p>
+        </div>
+      </section>
+    </>
+  ),
+  14: (
+    <>
+      <section className="glass-card p-6 space-y-4">
+        <h2 className="text-xl font-semibold text-[var(--color-text)]">Add Quote of the Day</h2>
+        <p className="text-[var(--color-text-muted)]">
+          Create <code className="bg-black/40 px-1 rounded">lib/quoteOfTheDay.ts</code> similar to <code className="bg-black/40 px-1 rounded">emojiOfTheDay.ts</code>—export a quote string. Add a <code className="bg-black/40 px-1 rounded">QuoteOfTheDayTile</code> component and include it in the dashboard. Users can change the quote via PR.
+        </p>
+        <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
+          <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor:</p>
+          <p className="text-sm text-[var(--color-text-muted)] italic">&quot;Create quoteOfTheDay and a QuoteOfTheDayTile like the emoji tile&quot;</p>
         </div>
       </section>
     </>

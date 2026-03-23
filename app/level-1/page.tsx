@@ -5,7 +5,7 @@ import Link from "next/link";
 import { LevelLayout } from "@/components/LevelLayout";
 import { WhatYoullSee } from "@/components/WhatYoullSee";
 import { CopyableCommand } from "@/components/CopyableCommand";
-import { STORAGE_KEY, defaultProgress, XP_PER_LEVEL, type Progress } from "@/lib/levels";
+import { STORAGE_KEY, defaultProgress, XP_PER_LEVEL, REPO_URL, type Progress } from "@/lib/levels";
 
 function getProgress(): Progress {
   if (typeof window === "undefined") return defaultProgress;
@@ -80,6 +80,18 @@ export default function Level1Page() {
             The file contains a list of names. You&apos;ll add yours. Don&apos;t worry—you&apos;re just adding a line of text. Here&apos;s what to do:
           </p>
 
+          <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
+            <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor to do it:</p>
+            <p className="text-sm text-[var(--color-text-muted)] mb-2">
+              Open the Cursor chat (Cmd+L or Ctrl+L) and try one of these:
+            </p>
+            <ul className="text-sm text-[var(--color-text-muted)] space-y-1 list-disc list-inside">
+              <li><em>&quot;Add my name [Your Name] to the contributors list in lib/contributors.ts&quot;</em></li>
+              <li><em>&quot;Add a new entry to the contributorsList array in contributors.ts with my name&quot;</em></li>
+              <li><em>&quot;Add [Your Name] to the contributors list in contributors.ts&quot;</em></li>
+            </ul>
+          </div>
+
           <div className="space-y-4">
             <div>
               <p className="text-sm font-medium text-[var(--color-text)] mb-2">What you&apos;ll see (before):</p>
@@ -98,18 +110,6 @@ export default function Level1Page() {
 ];`}
               </pre>
             </div>
-          </div>
-
-          <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
-            <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor to do it:</p>
-            <p className="text-sm text-[var(--color-text-muted)] mb-2">
-              Open the Cursor chat (Cmd+L or Ctrl+L) and try one of these:
-            </p>
-            <ul className="text-sm text-[var(--color-text-muted)] space-y-1 list-disc list-inside">
-              <li><em>&quot;Add my name [Your Name] to the contributors list in lib/contributors.ts&quot;</em></li>
-              <li><em>&quot;Add a new entry to the contributorsList array in contributors.ts with my name&quot;</em></li>
-              <li><em>&quot;Add [Your Name] to the contributors list in contributors.ts&quot;</em></li>
-            </ul>
           </div>
 
           <div className="rounded-lg bg-white/5 border border-white/10 p-4">
@@ -191,7 +191,10 @@ export default function Level1Page() {
             <h2 className="text-xl font-semibold text-[var(--color-text)]">Open your pull request</h2>
           </div>
           <p className="text-[var(--color-text-muted)]">
-            Go to the repo on GitHub in your browser. You&apos;ll see a yellow banner that says <strong className="text-[var(--color-text)]">&quot;Compare & pull request&quot;</strong>. Click it. Fill in the title and description (use the PR template if there is one), then click <strong className="text-[var(--color-text)]">Create pull request</strong>.
+            <Link href={REPO_URL} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline">
+              Go to the repo on GitHub
+            </Link>{" "}
+            in your browser. You&apos;ll see a yellow banner that says <strong className="text-[var(--color-text)]">&quot;Compare & pull request&quot;</strong>. Click it. Fill in the title and description (use the PR template if there is one), then click <strong className="text-[var(--color-text)]">Create pull request</strong>.
           </p>
           <WhatYoullSee
             title="What you'll see on GitHub"
@@ -204,7 +207,7 @@ export default function Level1Page() {
           />
           <p className="text-sm text-[var(--color-text-muted)]">
             Use the{" "}
-            <Link href="https://github.com/elan-asselstine-braze/pr-quest/blob/main/PR_TEMPLATE.md" className="text-[var(--color-accent)] underline" target="_blank" rel="noopener noreferrer">
+            <Link href={`${REPO_URL}/blob/main/PR_TEMPLATE.md`} className="text-[var(--color-accent)] underline" target="_blank" rel="noopener noreferrer">
               PR template
             </Link>{" "}
             if your repo has one.

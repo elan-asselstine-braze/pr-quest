@@ -15,7 +15,9 @@ export function ButtonMenuTile() {
             <button
               type="button"
               className={`
-                w-full text-left px-3 py-2 rounded-lg text-sm font-medium transition-opacity hover:opacity-90
+                w-full text-left px-3 py-2 rounded-lg text-sm font-medium
+                border border-white/20 transition-all duration-200
+                hover:border-white/40
                 ${btn.color ?? "bg-[var(--color-accent)]/20 text-[var(--color-accent)]"}
               `}
             >

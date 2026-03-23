@@ -31,8 +31,7 @@ const DIFFICULTY_LABELS: Record<TaskDifficulty, string> = {
 
 function getUnlockMessage(task: (typeof practiceTasks)[0], progress: Progress): string {
   if (task.unlocksAfter === "first-pr") return "Complete your first PR to unlock";
-  if (task.unlocksAfter === "beginner") return "Complete all beginner tasks to unlock";
-  return "Complete all intermediate tasks to unlock";
+  return "Complete 4 beginner tasks to unlock";
 }
 
 export default function PracticePage() {
