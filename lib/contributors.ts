@@ -5,6 +5,7 @@ export const CONTRIBUTOR_PLACEHOLDER = "Add your name here! (Edit lib/contributo
 export const contributorsList: string[] = [
   "Élan Asselstine",
   "Anders Wallace",
+  "Nancy Liang",
   CONTRIBUTOR_PLACEHOLDER,
 ];
 
