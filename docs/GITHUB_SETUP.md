@@ -44,7 +44,7 @@ So that new PRs get the template automatically:
 1. On GitHub, open your repo.
 2. Go to **Settings** → **General**.
 3. Under "Pull Requests", check **Allow merge commits** (or your preferred merge strategy).
-4. The repo already has a `PR_TEMPLATE.md` in the root — GitHub will use it for new PRs.
+4. The repo has `pull_request_template.md` in the root — GitHub automatically uses it for new PRs.
 
 ## 4. (Optional) Level 2 seeded PR
 
@@ -60,7 +60,7 @@ When you’re ready for Level 2:
 Update these with your real repo URL so links work for designers:
 
 - **README.md** — no change needed; it uses generic instructions.
-- **Level 1 page** — the "PR template" link: replace `https://github.com/your-org/pr-quest/blob/main/PR_TEMPLATE.md` in `app/level-1/page.tsx` with your repo’s raw PR_TEMPLATE.md URL, or leave as-is and tell designers to find PR_TEMPLATE.md in the repo.
+- **Level 1 page** — the "PR template" link: replace `https://github.com/your-org/pr-quest/blob/main/pull_request_template.md` in `app/level-1/page.tsx` with your repo’s raw pull_request_template.md URL, or leave as-is and tell designers to find pull_request_template.md in the repo.
 - **lib/levels.ts** — `SEEDED_PR_URL` when you have the Level 2 PR.
 
 You’re done. Designers can clone the repo, run `npm install` and `npm run dev`, and use `npm run quest` for the guided CLI.

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { SETUP_COMPLETE_KEY, SETUP_XP, practiceTasks, REPO_URL } from "@/lib/levels";
+import { SETUP_COMPLETE_KEY, SETUP_XP, REPO_URL } from "@/lib/levels";
 import { CopyableCommand } from "@/components/CopyableCommand";
 
 function getSetupComplete(): boolean {
@@ -104,54 +104,8 @@ export default function SetupPage() {
             Moves into the project folder and installs the packages the app needs.
           </p>
         </li>
-        <li>
-          <span className="font-medium text-[var(--color-text)]">Create your branch</span>
-          <CopyableCommand command="git checkout -b task1-yourname" />
-          <p className="mt-1 text-xs">
-            Replace <span className="font-mono bg-white/10 px-1 rounded">yourname</span> with your name. This creates a branch for your changes.
-          </p>
-          <div className="mt-3 rounded-lg bg-white/5 border border-white/10 p-3">
-            <p className="text-xs font-medium text-[var(--color-text)] mb-1">Branch naming by task</p>
-            <p className="text-xs text-[var(--color-text-muted)]">
-              Each practice task has its own branch prefix. Use <span className="font-mono bg-black/40 px-1 rounded">[prefix]-yourname</span>:
-            </p>
-            <ul className="mt-1.5 text-xs text-[var(--color-text-muted)] space-y-0.5">
-              {practiceTasks.slice(0, 5).map((q) => (
-                <li key={q.id}>
-                  <span className="font-mono text-[var(--color-text)]">{q.branchPrefix}-yourname</span>
-                  {" "}— {q.title}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </li>
-        <li>
-          <span className="font-medium text-[var(--color-text)]">Run the app (optional)</span>
-          <CopyableCommand command="npm run dev" />
-          <p className="mt-1 text-xs">
-            Starts the app. Open{" "}
-            <a href="http://localhost:3000" target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] hover:underline">
-              http://localhost:3000
-            </a>{" "}
-            in your browser to see it.
-          </p>
-        </li>
       </ol>
 
-      <div className="mt-8 rounded-xl border border-white/10 bg-white/5 p-4">
-        <h2 className="font-semibold text-[var(--color-text)] mb-2">Troubleshooting</h2>
-        <ul className="text-sm text-[var(--color-text-muted)] space-y-2">
-          <li>
-            <strong className="text-[var(--color-text)]">&quot;command not found&quot;</strong> — Git or Node isn&apos;t installed or isn&apos;t in your PATH. Install from the links above and restart the terminal.
-          </li>
-          <li>
-            <strong className="text-[var(--color-text)]">&quot;Permission denied&quot;</strong> — Try a different folder (e.g. <span className="font-mono text-xs bg-black/40 px-1 rounded">~/Desktop</span>).
-          </li>
-          <li>
-            <strong className="text-[var(--color-text)]">Mac: Xcode license</strong> — If Git asks you to accept a license, run <span className="font-mono text-xs bg-black/40 px-1 rounded">xcode-select --install</span> first, or install Git from git-scm.com.
-          </li>
-        </ul>
-      </div>
       <div className="mt-6">
         {isCelebrating ? (
           <div
@@ -172,7 +126,7 @@ export default function SetupPage() {
               href="/level-1"
               className="inline-flex items-center justify-center px-4 py-2.5 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity"
             >
-              Submit your first PR →
+              Let&apos;s submit your first PR!
             </Link>
           </div>
         ) : (
@@ -184,6 +138,21 @@ export default function SetupPage() {
             Mark complete
           </button>
         )}
+      </div>
+
+      <div className="mt-8 rounded-xl border border-white/10 bg-white/5 p-4">
+        <h2 className="font-semibold text-[var(--color-text)] mb-2">Troubleshooting</h2>
+        <ul className="text-sm text-[var(--color-text-muted)] space-y-2">
+          <li>
+            <strong className="text-[var(--color-text)]">&quot;command not found&quot;</strong> — Git or Node isn&apos;t installed or isn&apos;t in your PATH. Install from the links above and restart the terminal.
+          </li>
+          <li>
+            <strong className="text-[var(--color-text)]">&quot;Permission denied&quot;</strong> — Try a different folder (e.g. <span className="font-mono text-xs bg-black/40 px-1 rounded">~/Desktop</span>).
+          </li>
+          <li>
+            <strong className="text-[var(--color-text)]">Mac: Xcode license</strong> — If Git asks you to accept a license, run <span className="font-mono text-xs bg-black/40 px-1 rounded">xcode-select --install</span> first, or install Git from git-scm.com.
+          </li>
+        </ul>
       </div>
     </main>
   );

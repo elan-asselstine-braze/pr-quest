@@ -1,15 +1,17 @@
 import Link from "next/link";
-import { contributorsList } from "@/lib/contributors";
+import { contributorsList, contributorCount, CONTRIBUTOR_PLACEHOLDER } from "@/lib/contributors";
 
 export function ContributorsTile() {
   return (
     <div className="glass-card p-4 sm:p-5 flex flex-col h-full">
       <h2 className="text-lg font-semibold mb-1">Contributors</h2>
       <p className="text-sm text-[var(--color-text-muted)] mb-4">
-        {contributorsList.length} people learning PRs
+        {contributorCount} {contributorCount === 1 ? "person" : "people"} learning PRs
       </p>
       <ul className="flex-1 space-y-2 min-h-0">
-        {contributorsList.map((name, i) => (
+        {contributorsList
+          .filter((name) => name !== CONTRIBUTOR_PLACEHOLDER)
+          .map((name, i) => (
           <li key={i} className="text-sm truncate">
             {name}
           </li>
