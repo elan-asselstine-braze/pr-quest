@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { SETUP_COMPLETE_KEY, SETUP_XP, practiceTasks } from "@/lib/levels";
+import { SETUP_COMPLETE_KEY, SETUP_XP, practiceTasks, REPO_URL } from "@/lib/levels";
 import { CopyableCommand } from "@/components/CopyableCommand";
 
 function getSetupComplete(): boolean {
@@ -92,7 +92,7 @@ export default function SetupPage() {
         </li>
         <li>
           <span className="font-medium text-[var(--color-text)]">Clone the repo</span>
-          <CopyableCommand command="git clone https://github.com/elan-asselstine-braze/pr-quest.git" />
+          <CopyableCommand command={`git clone ${REPO_URL}.git`} />
           <p className="mt-1 text-xs">
             Downloads a copy of the project to a new <span className="font-mono bg-white/10 px-1 rounded">pr-quest</span> folder.
           </p>
