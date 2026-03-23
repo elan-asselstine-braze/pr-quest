@@ -1,0 +1,97 @@
+Enablement Sessions: 
+Submitting a PR as a Designer
+Duration: 60 minutes
+Audience: People who attended session 1
+Facilitators: Zach Sadler + Taylor Ridgway or Rafaella Studart
+Session 2 Intro
+Agenda:
+1. Recap of Session 1
+2. PRs explained in plain language
+3. Live demo: submitting a small PR
+4. Hands-on: everyone submits a small PR from UX debt
+By the end of the workshop, participants should be able to:
+* Explain what a PR is in plain language
+* Understand when it does and does not make sense to submit one
+* Follow the basic PR flow
+* Submit (or feel confident submitting) a very small PR
+Quick recap of Session 1
+What we covered in Session 1
+In the last session, we focused on using GitHub and Cursor to understand the product and the design system, not to build features.
+Specifically, we learned how to:
+* Use GitHub as a source of truth for how the product actually works
+* Use Cursor to:
+   * Ask questions about the codebase in plain language
+   * Find where a pattern or component is used across the product
+   * Understand differences in behavior between similar-looking UIs
+   * Identify ownership of patterns/components
+Key takeaway from Session 1:
+You don’t need to write code to collaborate effectively with engineering. Understanding and referencing implementation already makes collaboration better.
+Bridge to today:
+Today is about what to do when a suggestion is small and clear enough that it’s easier to propose it directly as a PR than to explain it back and forth in Slack.
+What is a PR?
+What a PR is
+A pull request (PR) is a proposal for a change.
+It is:
+* A way to suggest a specific change
+* A place for discussion and review
+* Something engineers can modify, take over, or reject
+A PR is not:
+* A commitment that the change must ship
+* A requirement that you maintain the code forever
+A helpful mental model: a PR is a structured way to say: “Here’s a concrete suggestion, what do you think?”[a]
+Braze's PR process
+Tktk
+Here’s way too much info
+When it makes sense for designers to submit a PR
+Designer-submitted PRs are most appropriate when the change is:
+* Small and contained
+* Easy to explain in one or two sentences
+* Can be demonstrated with a Before and After screenshot
+* Low-risk
+Examples:
+* Copy fixes[b]
+* Documentation updates
+* Token or variable usage fixes
+* Minor visual tweaks
+* Small component variants
+* Comments or clarifications in code
+
+When designers should not submit a PR
+PRs are not appropriate for:
+   * Architectural changes
+   * Complex logic or data flow
+   * Performance optimizations
+   * Anything you don’t understand
+Rule of thumb: If you can’t clearly explain what you changed and why, don’t submit a PR.
+
+
+Live Demo (Follow-along)
+   1. Open a repo in Cursor
+   2. Create a new branch
+   3. Make a very small change (for example):
+
+      * Fixing copy
+      * Updating a comment
+      * Improving a README or doc
+
+         4. Use Cursor to sanity-check:
+
+            * “Explain what this file does.”
+            * “Explain what I just changed.”
+            * “Does this affect anything else?”
+
+               5. Open a PR
+               6. Write a simple PR description:
+               * What changed
+               * Why it changed
+               * What did not change
+               7. Spin up a PCE to preview your changes  in Github by commenting pce-it OR manually create PCE (possibly add how-to if this doesnt feel like too much detail)
+               8. Attach image of the preview to the PR description
+               9. Once automated tests are done (all check marks ✅), submit for review[c]
+Call out during the demo:
+               * Nothing breaks by opening a PR
+               * Engineers still review everything
+               * This is reversible and collaborative
+
+
+
