@@ -4,6 +4,7 @@ export const CONTRIBUTOR_PLACEHOLDER = "Add your name here! (Edit lib/contributo
 /** Add your name via PR: edit this array and open a pull request. */
 export const contributorsList: string[] = [
   "Élan Asselstine",
+  "Nancy Liang",
   CONTRIBUTOR_PLACEHOLDER,
 ];
 
