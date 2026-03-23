@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import {
   learnModules,
   STORAGE_KEY,
@@ -376,7 +376,7 @@ function getMarkedComplete(): number[] {
   }
 }
 
-export default function LearnPage() {
+function LearnPageContent() {
   const searchParams = useSearchParams();
   const [progress, setProgress] = useState<Progress>(defaultProgress);
   const [markedComplete, setMarkedComplete] = useState<number[]>([]);
@@ -554,5 +554,22 @@ export default function LearnPage() {
         </div>
       )}
     </main>
+  );
+}
+
+function LearnPageFallback() {
+  return (
+    <main className="flex-1 px-3 py-6 sm:px-4 sm:py-8 max-w-3xl mx-auto w-full min-w-0">
+      <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-[var(--color-text)]">Learn Pull Requests</h1>
+      <p className="text-[var(--color-text-muted)]">Loading...</p>
+    </main>
+  );
+}
+
+export default function LearnPage() {
+  return (
+    <Suspense fallback={<LearnPageFallback />}>
+      <LearnPageContent />
+    </Suspense>
   );
 }
