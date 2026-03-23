@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { LevelLayout } from "@/components/LevelLayout";
 import { WhatYoullSee } from "@/components/WhatYoullSee";
+import { StepImage } from "@/components/StepImage";
 import { CopyableCommand } from "@/components/CopyableCommand";
 import { STORAGE_KEY, defaultProgress, XP_PER_LEVEL, REPO_URL, type Progress } from "@/lib/levels";
 
@@ -55,7 +56,7 @@ export default function Level1Page() {
         <section className="glass-card border-[var(--color-accent)]/20 p-6">
           <h2 className="text-lg font-semibold mb-2 text-[var(--color-text)]">Before you start</h2>
           <p className="text-[var(--color-text-muted)] mb-4">
-            Make sure you&apos;ve completed the <Link href="/setup" className="text-[var(--color-accent)] underline">Setup</Link> page: clone the repo, install dependencies, and create your branch. If you haven&apos;t, do that first—we&apos;ll wait!
+            Make sure you&apos;ve completed the <Link href="/setup" className="text-[var(--color-accent)] underline">Setup</Link> page: clone the repo and install dependencies. If you haven&apos;t, do that first—we&apos;ll wait!
           </p>
         </section>
 
@@ -70,10 +71,38 @@ export default function Level1Page() {
           </p>
         </section>
 
-        {/* Step 2: Make the code change */}
-        <section className="glass-card p-6 space-y-6">
+        {/* Step 2: Create your branch */}
+        <section className="glass-card p-6 space-y-4">
           <div className="flex items-center gap-3">
             <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">2</span>
+            <h2 className="text-xl font-semibold text-[var(--color-text)]">Create your branch</h2>
+          </div>
+          <p className="text-[var(--color-text-muted)]">
+            Before making changes, create a branch for your work. Replace <code className="bg-black/40 px-1.5 py-0.5 rounded text-sm">yourname</code> with your name (e.g. <code className="bg-black/40 px-1.5 py-0.5 rounded text-sm">task1-jane</code>).
+          </p>
+
+          <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
+            <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor to do it:</p>
+            <p className="text-sm text-[var(--color-text-muted)] mb-2">
+              Open the Cursor chat (Cmd+L or Ctrl+L) and try one of these:
+            </p>
+            <ul className="text-sm text-[var(--color-text-muted)] space-y-1 list-disc list-inside">
+              <li><em>&quot;Create a new branch called task1-[YourName] for my first PR&quot;</em></li>
+              <li><em>&quot;Create branch task1-yourname for me&quot;</em></li>
+              <li><em>&quot;Help me create a branch for this task. Use task1-[my name]&quot;</em></li>
+            </ul>
+          </div>
+
+          <div className="rounded-lg bg-white/5 border border-white/10 p-4">
+            <p className="text-sm font-medium text-[var(--color-text)] mb-2">Or run the command manually:</p>
+            <CopyableCommand command="git checkout -b task1-yourname" />
+          </div>
+        </section>
+
+        {/* Step 3: Make the code change */}
+        <section className="glass-card p-6 space-y-6">
+          <div className="flex items-center gap-3">
+            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">3</span>
             <h2 className="text-xl font-semibold text-[var(--color-text)]">Add your name to the list</h2>
           </div>
           <p className="text-[var(--color-text-muted)]">
@@ -125,10 +154,10 @@ export default function Level1Page() {
 
         </section>
 
-        {/* Step 3: See your change */}
+        {/* Step 4: See your change */}
         <section className="glass-card p-6 space-y-4">
           <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">3</span>
+            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">4</span>
             <h2 className="text-xl font-semibold text-[var(--color-text)]">See your change in the app</h2>
           </div>
           <p className="text-[var(--color-text-muted)]">
@@ -143,10 +172,10 @@ export default function Level1Page() {
           </p>
         </section>
 
-        {/* Step 4: Commit and push */}
+        {/* Step 5: Commit and push */}
         <section className="glass-card p-6 space-y-4">
           <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">4</span>
+            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">5</span>
             <h2 className="text-xl font-semibold text-[var(--color-text)]">Commit and push your changes</h2>
           </div>
           <p className="text-[var(--color-text-muted)]">
@@ -184,20 +213,38 @@ export default function Level1Page() {
           </div>
         </section>
 
-        {/* Step 5: Open the PR */}
+        {/* Step 6: Open the PR */}
         <section className="glass-card p-6 space-y-4">
           <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">5</span>
+            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">6</span>
             <h2 className="text-xl font-semibold text-[var(--color-text)]">Open your pull request</h2>
           </div>
           <p className="text-[var(--color-text-muted)]">
-            <Link href={REPO_URL} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline">
-              Go to the repo on GitHub
-            </Link>{" "}
-            in your browser. You&apos;ll see a yellow banner that says <strong className="text-[var(--color-text)]">&quot;Compare & pull request&quot;</strong>. Click it. Fill in the title and description (use the PR template if there is one), then click <strong className="text-[var(--color-text)]">Create pull request</strong>.
+            There are two ways to get there:
+          </p>
+          <ol className="text-sm text-[var(--color-text-muted)] space-y-2 list-decimal list-inside">
+            <li>
+              <strong className="text-[var(--color-text)]">Follow the links in Cursor.</strong> After you push, Cursor often shows a link to open your PR on GitHub—click it.
+            </li>
+            <li>
+              <strong className="text-[var(--color-text)]">Navigate to GitHub.</strong>{" "}
+              <Link href={REPO_URL} target="_blank" rel="noopener noreferrer" className="text-[var(--color-accent)] underline">
+                Go to the repo on GitHub
+              </Link>{" "}
+              in your browser. You&apos;ll see a yellow banner that says <strong className="text-[var(--color-text)]">&quot;Compare & pull request&quot;</strong>. Click it.
+            </li>
+          </ol>
+          <StepImage
+            src="/images/step-6-github-banner.png"
+            alt="GitHub recent push banner with Compare & pull request button"
+            description="Yellow banner after pushing: click Compare & pull request"
+          />
+          <p className="text-[var(--color-text-muted)]">
+            Fill in the title and description (use the PR template if there is one), then click <strong className="text-[var(--color-text)]">Create pull request</strong>.
           </p>
           <WhatYoullSee
             title="What you'll see on GitHub"
+            src="/images/step-6-pr-screen.png"
             caption="Paste your title at the top, description in the box, then click Create pull request."
             labels={[
               { text: "Title: e.g. [First PR] Add my name to contributors", position: "top" },
@@ -207,10 +254,30 @@ export default function Level1Page() {
           />
           <p className="text-sm text-[var(--color-text-muted)]">
             Use the{" "}
-            <Link href={`${REPO_URL}/blob/main/PR_TEMPLATE.md`} className="text-[var(--color-accent)] underline" target="_blank" rel="noopener noreferrer">
+            <Link href={`${REPO_URL}/blob/main/pull_request_template.md`} className="text-[var(--color-accent)] underline" target="_blank" rel="noopener noreferrer">
               PR template
             </Link>{" "}
             if your repo has one.
+          </p>
+        </section>
+
+        {/* Step 7: Approve your own PR */}
+        <section className="glass-card p-6 space-y-4">
+          <div className="flex items-center gap-3">
+            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">7</span>
+            <h2 className="text-xl font-semibold text-[var(--color-text)]">Approve your own PR</h2>
+          </div>
+          <p className="text-[var(--color-text-muted)]">
+            For this exercise, you&apos;ll approve your own PR to complete the full cycle. On your PR page:
+          </p>
+          <ol className="text-sm text-[var(--color-text-muted)] space-y-2 list-decimal list-inside">
+            <li>Click the <strong className="text-[var(--color-text)]">Files changed</strong> tab.</li>
+            <li>Click the green <strong className="text-[var(--color-text)]">Review changes</strong> button (top right).</li>
+            <li>Select <strong className="text-[var(--color-text)]">Approve</strong> from the dropdown.</li>
+            <li>Add an optional comment (e.g. &quot;Looks good!&quot;), then click <strong className="text-[var(--color-text)]">Submit review</strong>.</li>
+          </ol>
+          <p className="text-sm text-[var(--color-text-muted)]">
+            Once approved, you can merge the PR (or a maintainer can). You&apos;ve completed your first PR! 🎉
           </p>
         </section>
 

@@ -92,12 +92,23 @@ export default function PracticePage() {
                 ${done ? "border-emerald-500/30" : ""}
               `}
             >
+              <div className="flex gap-4 items-start">
+                {done && (
+                  <div
+                    className="shrink-0 w-6 h-6 rounded border-2 border-emerald-500 bg-emerald-500/20 text-emerald-400 flex items-center justify-center mt-0.5"
+                    aria-hidden
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                  </div>
+                )}
+                <div className="flex-1 min-w-0">
               <div className="flex flex-wrap items-start justify-between gap-2">
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-2 flex-wrap">
                     <h3 className="font-semibold text-[var(--color-text)]">
                       {task.title}
-                      {done && " ✓"}
                     </h3>
                     <span
                       className={`text-xs px-2 py-0.5 rounded-full ${
@@ -123,6 +134,8 @@ export default function PracticePage() {
                     <span aria-hidden>🔒</span> {getUnlockMessage(task, progress)}
                   </span>
                 )}
+              </div>
+                </div>
               </div>
             </div>
           );
