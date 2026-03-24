@@ -48,7 +48,7 @@ export default function Level1Page() {
   return (
     <LevelLayout title="Your first PR" level={1} hideHeader hideGradient>
       <p className="text-[var(--color-text-muted)] mb-10 text-lg">
-        You&apos;ll add your name to the contributors list on the Dashboard homepage and submit it as a pull request. We&apos;ll walk you through every step—no coding experience required.
+        You&apos;ll add your name to the contributors list and submit it as a pull request. Follow all 6 steps in order.
       </p>
 
       <div className="space-y-16">
@@ -56,29 +56,27 @@ export default function Level1Page() {
         <section className="glass-card border-[var(--color-accent)]/20 p-6">
           <h2 className="text-lg font-semibold mb-2 text-[var(--color-text)]">Before you start</h2>
           <p className="text-[var(--color-text-muted)] mb-4">
-            Make sure you&apos;ve completed the <Link href="/setup" className="text-[var(--color-accent)] underline">Setup</Link> page: clone the repo and install dependencies. If you haven&apos;t, do that first—we&apos;ll wait!
+            Make sure you&apos;ve completed the <Link href="/setup" className="text-[var(--color-accent)] underline">Setup</Link> page: clone, install, and open the project in Cursor. If you haven&apos;t, do that first—we&apos;ll wait!
           </p>
         </section>
 
-        {/* Step 1: Open in Cursor */}
-        <section className="glass-card p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">1</span>
-            <h2 className="text-xl font-semibold text-[var(--color-text)]">Open the project in Cursor</h2>
+        {/* Step 1: Create your branch */}
+        <section id="step-1" className="glass-card p-6 space-y-4 scroll-mt-4">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-[var(--color-accent)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M6 3v12" />
+              <path d="M18 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+              <path d="M6 21a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+              <path d="M15 6a9 9 0 0 0-9 9" />
+            </svg>
+            <p className="text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Step one</p>
           </div>
-          <p className="text-[var(--color-text-muted)]">
-            Open Cursor (or your code editor). Go to <strong className="text-[var(--color-text)]">File → Open Folder</strong> and select the <code className="bg-black/40 px-1.5 py-0.5 rounded text-sm">pr-quest</code> folder—the one you cloned during Setup. You should see a list of files and folders in the left sidebar.
+          <h2 className="text-sm font-bold text-[var(--color-text)] -mt-1">Create your branch</h2>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed">
+            Branches isolate your changes from the main codebase so you can work safely and submit a clean PR.
           </p>
-        </section>
-
-        {/* Step 2: Create your branch */}
-        <section className="glass-card p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">2</span>
-            <h2 className="text-xl font-semibold text-[var(--color-text)]">Create your branch</h2>
-          </div>
-          <p className="text-[var(--color-text-muted)]">
-            Before making changes, create a branch for your work. Replace <code className="bg-black/40 px-1.5 py-0.5 rounded text-sm">yourname</code> with your name (e.g. <code className="bg-black/40 px-1.5 py-0.5 rounded text-sm">task1-jane</code>).
+          <p className="text-sm text-[var(--color-text-muted)]">
+            Replace <code className="bg-black/40 px-1.5 py-0.5 rounded text-sm">yourname</code> with your name (e.g. <code className="bg-black/40 px-1.5 py-0.5 rounded text-sm">task1-jane</code>).
           </p>
 
           <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
@@ -99,14 +97,21 @@ export default function Level1Page() {
           </div>
         </section>
 
-        {/* Step 3: Make the code change */}
-        <section className="glass-card p-6 space-y-6">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">3</span>
-            <h2 className="text-xl font-semibold text-[var(--color-text)]">Add your name to the list</h2>
+        {/* Step 2: Make the code change */}
+        <section id="step-2" className="glass-card p-6 space-y-6 scroll-mt-4">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-[var(--color-accent)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+              <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+            </svg>
+            <p className="text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Step two</p>
           </div>
-          <p className="text-[var(--color-text-muted)]">
-            The file contains a list of names. You&apos;ll add yours. Don&apos;t worry—you&apos;re just adding a line of text. Here&apos;s what to do:
+          <h2 className="text-sm font-bold text-[var(--color-text)] -mt-1">Add your name to the list</h2>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed">
+            A simple edit like this lets you practice the full PR workflow without touching complex code.
+          </p>
+          <p className="text-sm text-[var(--color-text-muted)]">
+            Open <code className="bg-black/40 px-1.5 py-0.5 rounded text-sm">lib/contributors.ts</code> and add your name to the array. Options:
           </p>
 
           <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
@@ -154,14 +159,18 @@ export default function Level1Page() {
 
         </section>
 
-        {/* Step 4: See your change */}
-        <section className="glass-card p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">4</span>
-            <h2 className="text-xl font-semibold text-[var(--color-text)]">See your change in the app</h2>
+        {/* Step 3: See your change */}
+        <section id="step-3" className="glass-card p-6 space-y-4 scroll-mt-4">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-[var(--color-accent)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+              <circle cx="12" cy="12" r="3" />
+            </svg>
+            <p className="text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Step three</p>
           </div>
-          <p className="text-[var(--color-text-muted)]">
-            Before submitting, let&apos;s make sure your change looks right. Run the app and open the Dashboard.
+          <h2 className="text-sm font-bold text-[var(--color-text)] -mt-1">See your change in the app</h2>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed">
+            Verifying locally before submitting helps catch mistakes and builds confidence.
           </p>
           <p className="text-sm text-[var(--color-text-muted)]">
             In the terminal (or Cursor&apos;s integrated terminal), run:
@@ -172,14 +181,19 @@ export default function Level1Page() {
           </p>
         </section>
 
-        {/* Step 5: Commit and push */}
-        <section className="glass-card p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">5</span>
-            <h2 className="text-xl font-semibold text-[var(--color-text)]">Commit and push your changes</h2>
+        {/* Step 4: Commit and push */}
+        <section id="step-4" className="glass-card p-6 space-y-4 scroll-mt-4">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-[var(--color-accent)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+            <p className="text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Step four</p>
           </div>
-          <p className="text-[var(--color-text-muted)]">
-            Now you&apos;ll save your change to Git and send it to GitHub.
+          <h2 className="text-sm font-bold text-[var(--color-text)] -mt-1">Commit and push your changes</h2>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed">
+            Git tracks your changes; pushing sends them to GitHub so you can open a PR.
           </p>
 
           <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
@@ -213,14 +227,25 @@ export default function Level1Page() {
           </div>
         </section>
 
-        {/* Step 6: Open the PR */}
-        <section className="glass-card p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">6</span>
-            <h2 className="text-xl font-semibold text-[var(--color-text)]">Open your pull request</h2>
+        {/* Step 5: Open the PR */}
+        <section id="step-5" className="glass-card p-6 space-y-4 scroll-mt-4">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-[var(--color-accent)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M18 15a3 3 0 0 0-6 0" />
+              <path d="M18 15v3a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2v-3" />
+              <path d="M6 9a3 3 0 0 0 6 0" />
+              <path d="M6 9v3a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-3" />
+              <line x1="12" y1="9" x2="12" y2="15" />
+              <path d="M8 12h8" />
+            </svg>
+            <p className="text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Step five</p>
           </div>
+          <h2 className="text-sm font-bold text-[var(--color-text)] -mt-1">Open your pull request</h2>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed">
+            The PR is your request to merge—it&apos;s how collaborators review and integrate your work.
+          </p>
           <p className="text-[var(--color-text-muted)]">
-            There are two ways to get there:
+            Two ways to get there:
           </p>
           <ol className="text-sm text-[var(--color-text-muted)] space-y-2 list-decimal list-inside">
             <li>
@@ -261,23 +286,31 @@ export default function Level1Page() {
           </p>
         </section>
 
-        {/* Step 7: Approve your own PR */}
-        <section className="glass-card p-6 space-y-4">
-          <div className="flex items-center gap-3">
-            <span className="w-10 h-10 rounded-full bg-[var(--color-accent)]/20 text-[var(--color-accent)] font-bold flex items-center justify-center">7</span>
-            <h2 className="text-xl font-semibold text-[var(--color-text)]">Approve your own PR</h2>
+        {/* Step 6: Approve and merge your PR (optional) */}
+        <section id="step-6" className="glass-card p-6 space-y-4 scroll-mt-4">
+          <div className="flex items-center gap-2">
+            <svg className="w-5 h-5 text-[var(--color-accent)] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+            <p className="text-xs font-medium text-[var(--color-text-muted)] uppercase tracking-wider">Step six</p>
           </div>
-          <p className="text-[var(--color-text-muted)]">
-            For this exercise, you&apos;ll approve your own PR to complete the full cycle. On your PR page:
+          <h2 className="text-sm font-bold text-[var(--color-text)] -mt-1">Approve and merge your PR <span className="font-normal text-[var(--color-text-muted)]">(optional)</span></h2>
+          <p className="text-lg text-[var(--color-text)] leading-relaxed">
+            If you see the option to approve and merge your PR, you can do it to complete the full workflow:
           </p>
           <ol className="text-sm text-[var(--color-text-muted)] space-y-2 list-decimal list-inside">
             <li>Click the <strong className="text-[var(--color-text)]">Files changed</strong> tab.</li>
             <li>Click the green <strong className="text-[var(--color-text)]">Review changes</strong> button (top right).</li>
             <li>Select <strong className="text-[var(--color-text)]">Approve</strong> from the dropdown.</li>
             <li>Add an optional comment (e.g. &quot;Looks good!&quot;), then click <strong className="text-[var(--color-text)]">Submit review</strong>.</li>
+            <li>If a merge button appears, click it. You&apos;ve completed your first PR! 🎉</li>
           </ol>
+          <p className="text-sm font-bold text-[var(--color-text)]">
+            Don&apos;t see the option to approve or merge?
+          </p>
           <p className="text-sm text-[var(--color-text-muted)]">
-            Once approved, you can merge the PR (or a maintainer can). You&apos;ve completed your first PR! 🎉
+            That&apos;s normal if you opened the PR from a fork—only maintainers can merge. <strong className="text-[var(--color-text)]">Slack Élan Asselstine</strong> and they&apos;ll merge it for you.
           </p>
         </section>
 
@@ -285,7 +318,7 @@ export default function Level1Page() {
         <section className="rounded-xl border border-white/10 bg-white/5 p-6">
           <h2 className="font-semibold text-[var(--color-text)] mb-2">Need help?</h2>
           <p className="text-sm text-[var(--color-text-muted)] mb-2">
-            Stuck on a step? In Cursor, you can ask: <em>&quot;Help me add my name to the contributors list in lib/contributors.ts&quot;</em> or <em>&quot;I get an error when I run git push—what does it mean?&quot;</em>
+            Stuck on a step? In Cursor, you can ask: <em>&quot;Help me add my name to the contributors list in lib/contributors.ts&quot;</em> or <em>&quot;I get an error when I run git push—what does it mean?&quot;</em> If the Vercel build fails on your PR, you can still approve it—ask a maintainer to merge.
           </p>
           <Link href="/" className="text-sm text-[var(--color-accent)] underline">
             View the Dashboard →

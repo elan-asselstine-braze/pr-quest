@@ -230,9 +230,9 @@ function SubmitPRSection({ task }: { task: PracticeTask }) {
       </section>
 
       <section className="glass-card p-6 space-y-4">
-        <h3 className="text-lg font-semibold text-[var(--color-text)]">5. Review your own PR</h3>
+        <h3 className="text-lg font-semibold text-[var(--color-text)]">5. Review and merge your PR <span className="font-normal text-[var(--color-text-muted)]">(optional)</span></h3>
         <p className="text-[var(--color-text-muted)]">
-          Approve your own PR to complete the cycle. On your PR page: click <strong className="text-[var(--color-text)]">Files changed</strong>, then the green <strong className="text-[var(--color-text)]">Review changes</strong> button, select <strong className="text-[var(--color-text)]">Approve</strong>, add an optional comment, and click <strong className="text-[var(--color-text)]">Submit review</strong>.
+          If you see the option to approve and merge: click <strong className="text-[var(--color-text)]">Files changed</strong>, then the green <strong className="text-[var(--color-text)]">Review changes</strong> button, select <strong className="text-[var(--color-text)]">Approve</strong>, add an optional comment, and click <strong className="text-[var(--color-text)]">Submit review</strong>. The PR will merge automatically once approved. <strong className="text-[var(--color-text)]">Don&apos;t see it?</strong> That&apos;s normal for PRs from forks—Slack Élan Asselstine and they&apos;ll merge it for you.
         </p>
       </section>
     </>
@@ -261,7 +261,7 @@ function LighterTaskContent({ task }: { task: PracticeTask }) {
       <section className="rounded-xl border border-white/10 bg-white/5 p-6">
         <h2 className="font-semibold text-[var(--color-text)] mb-2">When you&apos;re done</h2>
         <p className="text-sm text-[var(--color-text-muted)] mb-2">
-          Run <code className="bg-black/40 px-1 rounded">npm run dev</code> to preview, then commit, push, and open a PR. Use the branch <code className="bg-black/40 px-1 rounded">{task.branchPrefix}-yourname</code>. Then review your own PR: <strong className="text-[var(--color-text)]">Files changed</strong> → <strong className="text-[var(--color-text)]">Review changes</strong> → <strong className="text-[var(--color-text)]">Approve</strong> → <strong className="text-[var(--color-text)]">Submit review</strong>.
+          Run <code className="bg-black/40 px-1 rounded">npm run dev</code> to preview, then commit, push, and open a PR. Use the branch <code className="bg-black/40 px-1 rounded">{task.branchPrefix}-yourname</code>. If you see the option to approve and merge: <strong className="text-[var(--color-text)]">Files changed</strong> → <strong className="text-[var(--color-text)]">Review changes</strong> → <strong className="text-[var(--color-text)]">Approve</strong> → <strong className="text-[var(--color-text)]">Submit review</strong>. Don&apos;t see it? Slack Élan Asselstine and they&apos;ll merge it for you.
         </p>
       </section>
     </div>
