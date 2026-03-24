@@ -6,6 +6,7 @@ export const contributorsList: string[] = [
   "Élan Asselstine",
   "Nancy Chiu",
   "Nancy Liang",
+  "Anders Wallace",
   CONTRIBUTOR_PLACEHOLDER,
 ];
 
