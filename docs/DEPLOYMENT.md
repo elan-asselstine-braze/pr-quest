@@ -47,7 +47,7 @@ For testing the flow, the defaults work.
 1. **Use incognito/private mode** (or a different browser) so localStorage is fresh.
 2. Open your Vercel URL (e.g. `https://pr-quest.vercel.app`).
 3. **Learn** – Go through the Learn modules, mark them complete as desired.
-4. **Setup** – Follow the Setup page (clone repo, install, create branch). Use the clone URL for *your* fork or org’s repo.
+4. **Setup** – Follow the Setup page (clone the **org repo**, install, create branch). Internal users clone the shared repository, not a fork.
 5. **Practice** – Start with Level 1 (Your first PR), make the change, preview, commit, push, open PR.
 
 ## 5. Repo for new users

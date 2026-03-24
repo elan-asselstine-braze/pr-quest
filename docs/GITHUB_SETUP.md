@@ -63,4 +63,4 @@ Update these with your real repo URL so links work for designers:
 - **Level 1 page** — the "PR template" link: replace `https://github.com/your-org/pr-quest/blob/main/pull_request_template.md` in `app/level-1/page.tsx` with your repo’s raw pull_request_template.md URL, or leave as-is and tell designers to find pull_request_template.md in the repo.
 - **lib/levels.ts** — `SEEDED_PR_URL` when you have the Level 2 PR.
 
-You’re done. Designers can clone the repo, run `npm install` and `npm run dev`, and follow **Learn**, **Setup**, and **Practice** in the app.
+You’re done. For an **internal** cohort: add designers as **collaborators with Write** (or org access) so they clone **this repo** directly—no fork. They run `npm install` and `npm run dev`, then follow **Learn**, **Setup**, and **Practice** in the app.
