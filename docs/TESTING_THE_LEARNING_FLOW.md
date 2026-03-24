@@ -1,47 +1,27 @@
 # Testing the learning flow
 
-Use this to walk through PR Quest as a designer would: website + CLI, then a full Level 1 run (branch → change → PR).
+Use this to walk through PR Quest as a designer would: the website only, then a full first-PR run (branch → change → PR).
 
 ## 1. Run the site
 
 ```bash
-cd "/Users/elan.asselstine/Desktop/PR Quest"
+cd "/path/to/pr-quest"
 npm install   # if you haven’t already
 npm run dev
 ```
 
 Open **http://localhost:3000**. You should see:
 
-- Landing page with three level cards and badges
-- Links to Level 1, Level 2, Level 3
-- “Run the CLI” hint: `npm run quest`
+- **Dashboard** with progress, contributors, emoji of the day, and buttons
+- **Learn**, **Setup**, and **Practice** in the sidebar
 
-Click into each level to confirm content and checkboxes load. Try checking boxes and refreshing — progress should persist (localStorage).
-
----
-
-## 2. Run the CLI (guided flow)
-
-In a **second terminal** (keep `npm run dev` running in the first — the CLI and dev server need separate terminals):
-
-```bash
-cd "/Users/elan.asselstine/Desktop/PR Quest"
-npm run quest
-```
-
-- Choose **Level 1** and enter your name when prompted.
-- The CLI will:
-  - Check git, Node, and `node_modules`
-  - Suggest branch name and `git checkout -b task1-yourname`
-  - Later steps check whether you edited the right file and have a commit
-
-Run `npm run quest` again after each step (e.g. after creating the branch, after editing the file) to see the next step and validation.
+Click through **Learn** modules, **Setup** steps, and **Practice** (start tasks + quest map). On **Level 1** (`/level-1`), confirm content and checkboxes load. Try checking boxes and refreshing—progress should persist (localStorage).
 
 ---
 
-## 3. Test Level 1 end-to-end (first PR)
+## 2. Test Level 1 end-to-end (first PR)
 
-Simulate a designer doing Level 1 on your own repo.
+Simulate a designer doing their first PR on your own repo.
 
 1. **Create branch**
    ```bash
@@ -51,52 +31,48 @@ Simulate a designer doing Level 1 on your own repo.
    ```
 
 2. **Make a small change**  
-   Edit `app/contributors/page.tsx`: add a test name to the `designers` array (or change a theme token in `app/globals.css`).
+   Edit `lib/contributors.ts`: add a test name to `contributorsList` (or follow the Level 1 page for the exact file).
 
-3. **Run the CLI again**  
-   `npm run quest` → Level 1 → it should detect your branch and file changes and guide you to commit and push.
-
-4. **Commit and push**
+3. **Commit and push**
    ```bash
-   git add app/contributors/page.tsx
+   git add lib/contributors.ts
    git commit -m "[Level 1] Add test name to contributors"
    git push -u origin task1-test
    ```
 
-5. **Open a PR on GitHub**
-   - Go to https://github.com/elan-asselstine-braze/pr-quest
+4. **Open a PR on GitHub**
+   - Go to your repo on GitHub
    - Use the yellow “Compare & pull request” for `task1-test`
    - Fill in the PR template (What I changed / Why / Screenshot)
 
-6. **Mark Level 1 complete on the site**  
-   On http://localhost:3000/level-1, check all four checkboxes. The “First Ship” badge should unlock and appear on the landing page.
+5. **Mark Level 1 complete on the site**  
+   On http://localhost:3000/level-1, complete the steps (checkboxes). The dashboard should reflect progress.
 
 ---
 
-## 4. Test Level 2 (review flow)
+## 3. Test Level 2 (review flow)
 
-- No seeded PR yet: the Level 2 page and CLI link to the repo’s **Pull requests** list.
-- To test the page: open `/level-2`, read the diff explainer, use the “Open seeded PR” link (goes to PRs list).
+- With no seeded PR: the Level 2 page links to the repo’s **Pull requests** list.
+- Open `/level-2`, read the diff explainer, use the seeded PR links.
 - Optional: create a branch `seeded-pr-accessibility`, add the issues from `levels/seeded-issues.md`, push, open a PR, then set that PR URL in `lib/levels.ts` as `SEEDED_PR_URL` (or `NEXT_PUBLIC_SEEDED_PR_URL`) so Level 2 points at a real PR.
 
 ---
 
-## 5. Test Level 3 (bug hunt)
+## 4. Test Level 3 (bug hunt)
 
 1. Open **http://localhost:3000/level-3**.
-2. Hover the “Something feels off here” card — the intentional bug (state-driven re-render) may cause a small flicker or layout shift.
+2. Hover the “Something feels off here” card—the intentional bug may cause a small flicker or layout shift.
 3. Use the **Power Prompts** (copy into Cursor) to find and fix `components/BuggyCard.tsx`.
-4. Check the four checkboxes when done to unlock the “AI Detective” badge.
+4. Check the four checkboxes when done.
 
 ---
 
 ## Quick checklist
 
-| What to test              | How |
-|---------------------------|-----|
-| Site loads                | `npm run dev` → http://localhost:3000 |
-| Level pages and checkboxes| Click Level 1–3, toggle checkboxes, refresh (progress persists) |
-| CLI level menu            | `npm run quest` → pick Level 1, 2, or 3 |
-| CLI Level 1 validation    | Run `npm run quest` after branch, after edit, after commit |
-| Full Level 1 flow         | Branch → edit contributors → commit → push → open PR on GitHub → check boxes on site |
-| Level 3 bug               | Hover BuggyCard on /level-3, use Cursor to fix it |
+| What to test               | How |
+|----------------------------|-----|
+| Site loads                 | `npm run dev` → http://localhost:3000 |
+| Learn / Setup / Practice   | Use sidebar; Practice map and start tasks |
+| Level pages and checkboxes | Level 1–3; toggle checkboxes, refresh (progress persists) |
+| Full Level 1 flow          | Branch → edit `lib/contributors.ts` → commit → push → PR on GitHub → complete steps on site |
+| Level 3 bug                | Hover BuggyCard on `/level-3`, use Cursor to fix it |

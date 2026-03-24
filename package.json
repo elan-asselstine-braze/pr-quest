@@ -2,21 +2,19 @@
   "name": "pr-quest",
   "version": "0.1.0",
   "private": true,
+  "description": "Next.js site for designers to learn pull requests—Learn, Setup, Practice, and level flows in the browser.",
   "scripts": {
     "dev": "next dev",
     "dev:port": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "quest": "node scripts/quest.js",
     "seed-review-prs": "node scripts/seed-review-prs.js"
   },
   "dependencies": {
     "next": "^15.0.0",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "chalk": "^4.1.2",
-    "inquirer": "^8.2.6"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
