@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { contributorsList } from "@/lib/contributors";
+import { contributorsList, isContributorShownOnSite } from "@/lib/contributors";
 
 export default function ContributorsPage() {
   return (
@@ -21,7 +21,7 @@ export default function ContributorsPage() {
         </p>
 
         <ul className="space-y-2">
-          {contributorsList.map((name, i) => (
+          {contributorsList.filter(isContributorShownOnSite).map((name, i) => (
             <li key={i} className="glass-card list-none">
               {name}
             </li>

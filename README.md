@@ -6,6 +6,8 @@ A Next.js learning site that helps designers get comfortable submitting pull req
 
 **Sharing with designers:** Send them the deployed site URL or the repo. They follow in-app steps—no separate command-line tutorial.
 
+**Internal workflow:** Add teammates as **collaborators with write access** to the org repo. Everyone **clones that repo** (green **Code** button on GitHub—HTTPS or SSH), creates a branch off `main`, and opens PRs into the same repo. **No fork**—one shared remote keeps the flow simple.
+
 ## Branch naming (important)
 
 Use this convention so everyone can work in the same repo without collisions:

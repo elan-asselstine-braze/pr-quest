@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { contributorsList, contributorCount, CONTRIBUTOR_PLACEHOLDER } from "@/lib/contributors";
+import { contributorsList, contributorCount, isContributorShownOnSite } from "@/lib/contributors";
 
 export function ContributorsTile() {
   return (
@@ -10,7 +10,7 @@ export function ContributorsTile() {
       </p>
       <ul className="flex-1 space-y-2 min-h-0">
         {contributorsList
-          .filter((name) => name !== CONTRIBUTOR_PLACEHOLDER)
+          .filter(isContributorShownOnSite)
           .map((name, i) => (
           <li key={i} className="text-sm truncate">
             {name}

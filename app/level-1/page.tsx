@@ -128,19 +128,25 @@ export default function Level1Page() {
 
           <div className="space-y-4">
             <div>
-              <p className="text-sm font-medium text-[var(--color-text)] mb-2">What you&apos;ll see (before):</p>
+              <p className="text-sm font-medium text-[var(--color-text)] mb-2">In the code (look for this slot):</p>
               <pre className="p-4 rounded-lg bg-black/40 text-sm font-mono text-[var(--color-text)] overflow-x-auto">
 {`export const contributorsList: string[] = [
+  "Élan Asselstine",
   "Add your name here! (Edit lib/contributors.ts and open a PR)",
+  "YOUR_NAME_HERE",
 ];`}
               </pre>
+              <p className="text-xs text-[var(--color-text-muted)] mt-2">
+                The <code className="bg-black/40 px-1 rounded">YOUR_NAME_HERE</code> line won&apos;t show on the Dashboard until you replace it with a real name.
+              </p>
             </div>
             <div>
-              <p className="text-sm font-medium text-[var(--color-text)] mb-2">What to change it to (after):</p>
+              <p className="text-sm font-medium text-[var(--color-text)] mb-2">After you edit:</p>
               <pre className="p-4 rounded-lg bg-black/40 text-sm font-mono text-[var(--color-text)] overflow-x-auto">
 {`export const contributorsList: string[] = [
+  "Élan Asselstine",
   "Add your name here! (Edit lib/contributors.ts and open a PR)",
-  "Your Name",
+  "Alex Kim",
 ];`}
               </pre>
             </div>
@@ -149,10 +155,8 @@ export default function Level1Page() {
           <div className="rounded-lg bg-white/5 border border-white/10 p-4">
             <p className="text-sm font-medium text-[var(--color-text)] mb-2">Or do it manually:</p>
             <ol className="text-sm text-[var(--color-text-muted)] space-y-2 list-decimal list-inside">
-              <li>Click after the closing <code className="bg-black/40 px-1 rounded">]</code> of the first line (the one with &quot;Add your name here&quot;).</li>
-              <li>Press <strong className="text-[var(--color-text)]">Enter</strong> to create a new line.</li>
-              <li>Type a comma <code className="bg-black/40 px-1 rounded">,</code> at the end of the line you just left.</li>
-              <li>On the new line, type your name in quotes: <code className="bg-black/40 px-1 rounded">&quot;Your Name&quot;</code> (replace with your actual name).</li>
+              <li>Open <code className="bg-black/40 px-1 rounded">lib/contributors.ts</code>.</li>
+              <li>Find <code className="bg-black/40 px-1 rounded">YOUR_NAME_HERE</code> and replace it with your name in quotes, e.g. <code className="bg-black/40 px-1 rounded">&quot;Alex Kim&quot;</code>.</li>
               <li>Press <strong className="text-[var(--color-text)]">Cmd+S</strong> (Mac) or <strong className="text-[var(--color-text)]">Ctrl+S</strong> (Windows) to save.</li>
             </ol>
           </div>
@@ -195,17 +199,15 @@ export default function Level1Page() {
           <p className="text-lg text-[var(--color-text)] leading-relaxed">
             Git tracks your changes; pushing sends them to GitHub so you can open a PR.
           </p>
+          <p className="text-sm text-[var(--color-text-muted)]">
+            If your PR later shows merge conflicts with <code className="bg-black/40 px-1 rounded">main</code>, you can resolve them on GitHub during review—no need to merge <code className="bg-black/40 px-1 rounded">main</code> locally in this step.
+          </p>
 
           <div className="rounded-lg bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/20 p-4">
-            <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor to do it:</p>
-            <p className="text-sm text-[var(--color-text-muted)] mb-2">
-              In Cursor chat, try one of these (replace <code className="bg-black/40 px-1 rounded">yourname</code> with your branch name, e.g. <code className="bg-black/40 px-1 rounded">task1-jane</code>):
+            <p className="text-sm font-medium text-[var(--color-text)] mb-2">Ask Cursor:</p>
+            <p className="text-sm text-[var(--color-text-muted)]">
+              <em>&quot;Help me commit and push my contributors change.&quot;</em>
             </p>
-            <ul className="text-sm text-[var(--color-text-muted)] space-y-1 list-disc list-inside">
-              <li><em>&quot;Commit and push lib/contributors.ts with the message [First PR] Add my name to contributors. My branch is task1-yourname&quot;</em></li>
-              <li><em>&quot;Help me add, commit, and push lib/contributors.ts to my branch task1-yourname&quot;</em></li>
-              <li><em>&quot;Run the git commands to commit and push my changes to GitHub—I changed lib/contributors.ts and my branch is task1-yourname&quot;</em></li>
-            </ul>
           </div>
 
           <div className="rounded-lg bg-white/5 border border-white/10 p-4">
@@ -310,7 +312,7 @@ export default function Level1Page() {
             Don&apos;t see the option to approve or merge?
           </p>
           <p className="text-sm text-[var(--color-text-muted)]">
-            That&apos;s normal if you opened the PR from a fork—only maintainers can merge. <strong className="text-[var(--color-text)]">Slack Élan Asselstine</strong> and they&apos;ll merge it for you.
+            Branch protection or permissions can hide merge for some people. <strong className="text-[var(--color-text)]">Slack Élan Asselstine</strong> and they can help or merge for you.
           </p>
         </section>
 

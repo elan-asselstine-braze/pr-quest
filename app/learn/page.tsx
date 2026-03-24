@@ -190,7 +190,7 @@ function getModuleExpandedContent(
                       git clone https://github.com/&lt;org&gt;/&lt;repo&gt;.git
                     </pre>
                     <p className="mt-1 text-xs">
-                      Replace <code className="bg-white/10 px-1 rounded">&lt;org&gt;/&lt;repo&gt;</code> with the actual repository (e.g. <code className="bg-white/10 px-1 rounded">your-org/pr-quest</code>).
+                      Replace <code className="bg-white/10 px-1 rounded">&lt;org&gt;/&lt;repo&gt;</code> with the actual repository (e.g. <code className="bg-white/10 px-1 rounded">your-org/pr-quest</code>). For PR Quest as an internal team, clone the <strong className="text-[var(--color-text)]">shared company repo</strong> you have write access to—no personal fork.
                     </p>
                   </div>
                   <p className="text-xs sm:pt-6">

@@ -174,6 +174,9 @@ export default function SetupPage() {
             <p className="mt-2 text-sm text-[var(--color-text-muted)]">
               <strong className="text-[var(--color-text)]">Why:</strong> Cloning downloads a full copy of the project to your computer so you can edit files and push your changes.
             </p>
+            <p className="mt-2 text-sm text-[var(--color-text-muted)]">
+              <strong className="text-[var(--color-text)]">Internal team:</strong> Clone the <strong className="text-[var(--color-text)]">company org repo</strong> (you need write access—ask your lead if the clone or push fails). Use the same repository everyone else uses; no personal fork.
+            </p>
           </div>
         </section>
 
