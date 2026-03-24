@@ -1,10 +1,10 @@
 # PR Quest
 
-A self-serve learning site that helps designers get confident and comfortable submitting pull requests.
+A Next.js learning site that helps designers get comfortable submitting pull requests. Everything happens in the browser: **Learn** (concepts), **Setup** (clone, branch, push), **Practice** (guided tasks and a quest map), and level pages for your first PR, review practice, and debugging.
 
 **New to this repo?** See [docs/GITHUB_SETUP.md](docs/GITHUB_SETUP.md) for how to put this project on GitHub and push your first commit.
 
-**Easiest way to share with designers:** Send them the link to the site (or the repo). They can do everything from the website: read the theory on Level 1, then follow the “Easiest path” steps there to make one change and open a PR. No CLI required.
+**Sharing with designers:** Send them the deployed site URL or the repo. They follow in-app steps—no separate command-line tutorial.
 
 ## Branch naming (important)
 
@@ -23,29 +23,30 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). **To see your changes before submitting a PR:** keep `npm run dev` running while you edit files; the site will hot-reload so you can preview everything in the browser first.
+Open [http://localhost:3000](http://localhost:3000). Keep `npm run dev` running while you edit; the site hot-reloads so you can preview changes before opening a PR.
 
-## Guided mode (CLI)
+## What’s in the app
 
-For step-by-step help through each level, open a **second terminal** (keep `npm run dev` running in the first):
+| Area | Purpose |
+|------|---------|
+| **Dashboard** | Progress, contributors, emoji of the day, playful buttons |
+| **Learn** | Short modules on PRs, Git, and review |
+| **Setup** | Step-by-step: clone, branch, edit, commit, push |
+| **Practice** | “Start here” beginner tasks, then a quest map of optional tasks (by difficulty) |
 
-```bash
-npm run quest
-```
-
-Then choose Level 1, 2, or 3. The CLI checks your environment, suggests commands, and explains what each command does.
+Level pages (`/level-1`, `/level-2`, `/level-3`) walk through your first PR, reviewing a seeded PR, and hunting an intentional UI bug with Cursor.
 
 ## Project structure
 
-- `app/` – Next.js pages (landing, level-1, level-2, level-3, contributors)
-- `components/` – UI (ProgressBar, Badge, PowerPrompt, DiffExplainer, etc.)
-- `lib/` – Level metadata and config
-- `levels/` – Level docs and seeded-issue notes
-- `scripts/quest.js` – CLI for guided levels
-- `styles/` – Theme tokens and global CSS
+- `app/` – Next.js App Router pages (dashboard, learn, setup, practice, levels, tasks)
+- `components/` – UI (TabNav, dashboard tiles, PracticeMap, etc.)
+- `lib/` – Contributors list, level metadata, practice tasks, theme tokens
+- `levels/` – Facilitator notes and seeded-issue ideas for Level 2
+- `scripts/` – `seed-review-prs.js` for maintainers (optional PR scaffolding)
+- `docs/` – GitHub setup, deployment, testing notes
 
 ## Contributing
 
 1. Create a branch: `git checkout -b task1-yourname`
-2. Make your change (e.g. add your name to the Contributors page, or change a theme token).
+2. Make your change (e.g. add your name in `lib/contributors.ts`, or a practice task).
 3. Commit and push, then open a pull request using the PR template.

@@ -6,7 +6,7 @@ Your project is already a git repo with an initial commit on `main`. Follow thes
 
 1. Go to [github.com/new](https://github.com/new).
 2. **Repository name:** `pr-quest` (or any name you prefer).
-3. **Description (optional):** e.g. "Learn to submit pull requests — for designers."
+3. **Description (optional):** e.g. "Learn pull requests in the browser—Learn, Setup, Practice for designers."
 4. Choose **Public**.
 5. **Do not** check "Add a README", "Add .gitignore", or "Choose a license" — you already have these in your local repo.
 6. Click **Create repository**.
@@ -63,4 +63,4 @@ Update these with your real repo URL so links work for designers:
 - **Level 1 page** — the "PR template" link: replace `https://github.com/your-org/pr-quest/blob/main/pull_request_template.md` in `app/level-1/page.tsx` with your repo’s raw pull_request_template.md URL, or leave as-is and tell designers to find pull_request_template.md in the repo.
 - **lib/levels.ts** — `SEEDED_PR_URL` when you have the Level 2 PR.
 
-You’re done. Designers can clone the repo, run `npm install` and `npm run dev`, and use `npm run quest` for the guided CLI.
+You’re done. Designers can clone the repo, run `npm install` and `npm run dev`, and follow **Learn**, **Setup**, and **Practice** in the app.

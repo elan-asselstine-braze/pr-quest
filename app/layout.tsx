@@ -4,7 +4,8 @@ import { TabNav } from "@/components/TabNav";
 
 export const metadata: Metadata = {
   title: "PR Quest",
-  description: "Learn to submit pull requests. Built for designers.",
+  description:
+    "Learn pull requests in the browser—Learn, Setup, Practice, and guided levels for designers.",
 };
 
 export default function RootLayout({
