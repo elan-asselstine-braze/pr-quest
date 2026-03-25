@@ -1,47 +1,40 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
-export function CopyableCommand({ command }: { command: string }) {
+type CopyableCommandProps = {
+  /** Exact string copied to the clipboard and shown in the block. */
+  command: string;
+  className?: string;
+};
+
+export function CopyableCommand({ command, className = "" }: CopyableCommandProps) {
   const [copied, setCopied] = useState(false);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(command);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(command);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard denied or unavailable — ignore
+    }
+  }, [command]);
 
   return (
-    <div className="group relative">
-      <pre className="mt-1 p-2 pr-12 rounded bg-black/40 text-xs overflow-x-auto font-mono text-[var(--color-text)]">
+    <div
+      className={`flex items-stretch overflow-hidden rounded-lg border border-white/10 bg-black/40 ${className}`}
+    >
+      <code className="min-w-0 flex-1 overflow-x-auto px-3 py-2.5 pr-2 font-mono text-[13px] leading-relaxed text-emerald-300/95 sm:text-sm">
         {command}
-      </pre>
+      </code>
       <button
         type="button"
         onClick={handleCopy}
-        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:bg-white/10 transition-colors"
-        title="Copy"
-        aria-label={copied ? "Copied!" : "Copy command"}
+        className="shrink-0 border-l border-white/10 bg-white/[0.03] px-3 text-xs font-medium text-zinc-400 transition-colors hover:bg-white/[0.06] hover:text-[var(--color-accent)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]/50"
+        aria-label={`Copy command: ${command}`}
       >
-        {copied ? (
-          <span className="text-xs text-emerald-400">Copied</span>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden
-          >
-            <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
-            <path d="M4 16V4a2 2 0 0 1 2-2h10" />
-          </svg>
-        )}
+        {copied ? "Copied" : "Copy"}
       </button>
     </div>
   );
