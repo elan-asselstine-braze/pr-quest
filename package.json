@@ -5,6 +5,10 @@
   "description": "Next.js site for designers to learn pull requests—Learn, Setup, Practice, and level flows in the browser.",
   "scripts": {
     "dev": "next dev",
+    "dev:clean": "rm -rf .next && next dev",
+    "dev:clean:3000": "rm -rf .next && next dev -p 3000",
+    "dev:clean:3001": "rm -rf .next && next dev -p 3001",
+    "dev:turbo": "next dev --turbopack",
     "dev:port": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
@@ -17,6 +21,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",

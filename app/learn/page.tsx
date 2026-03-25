@@ -434,10 +434,31 @@ function LearnPageContent() {
       <h1 className="text-2xl sm:text-3xl font-bold mb-2 text-[var(--color-text)]">
         Learn Pull Requests
       </h1>
-      <p className="text-[var(--color-text-muted)] mb-8">
+      <p className="text-[var(--color-text-muted)] mb-6">
         Master the basics before making your first contribution. Ideal flow: Learn → Setup →
         Practice. Feel free to skip sections as you like.
       </p>
+
+      <div className="rounded-xl border border-[var(--color-accent)]/30 bg-gradient-to-br from-[var(--color-accent)]/15 to-violet-900/10 p-5 mb-8">
+        <h2 className="font-semibold text-[var(--color-text)] mb-1">PR Simulator</h2>
+        <p className="text-sm text-[var(--color-text-muted)] mb-3">
+          Simulate the PR process! Type git commands to branch and merge a change
+        </p>
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href="/learn/game"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--color-accent)] text-white text-sm font-medium hover:opacity-90 transition-opacity"
+          >
+            Play PR Simulator →
+          </Link>
+          <Link
+            href="/learn/cheat-sheet"
+            className="text-sm text-[var(--color-accent)] hover:underline font-medium"
+          >
+            PR cheat sheet
+          </Link>
+        </div>
+      </div>
 
       <div className="rounded-xl border border-white/10 bg-[var(--color-accent)]/10 p-4 mb-8">
         <div className="flex justify-between items-start gap-4 mb-2">

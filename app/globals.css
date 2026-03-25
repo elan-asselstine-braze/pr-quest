@@ -37,3 +37,17 @@ body {
   backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
+
+@keyframes pr-player-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.animate-pr-player-bob {
+  animation: pr-player-bob 0.65s ease-in-out infinite;
+}
